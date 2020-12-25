@@ -1,2 +1,2 @@
 # DeepVesnin
-AI/ML swiss knife
+AI/ML swiss knife library that will allow both professionals and regular users to have an advantage of the AI and ML applied to their real tasks. This is an initial commit, and I am intentionally not removing the deeppavlov package name for now, so you can test it as a drop-in replacement. The name will be changed soon, however - so as the compatibility layer will arise and will be maintained while it will be possible. Expect a bit more bugs for now, because it is a Community Technical Preview, not even an alpha. Also please keep in mind that the commits will be frequent, so check out the repo periodically - some bugs may be already fixed and a new functionality will be added.
