@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "disable_existing_loggers": false,
+  "loggers": {
+    "deeppavlov": {
+      "level": "INFO",
+      "handlers": [
+        "stderr"
+      ],
+      "propagate": true
+    },
+    "uvicorn.access": {
+      "level": "INFO",
+      "handlers": [
+        "uvicorn_handler"
+      ],
+      "propagate": true
+    },
+    "uvicorn.error": {
+      "level": "INFO",
+      "handlers": [
+        "uvicorn_handler"
+      ],
+      "propagate": true
+    }
+  },
+  "formatters": {
+    "default": {
+      "format": "%(asctime)s.%(msecs)d %(levelname)s in '%(name)s'['%(module)s'] at line %(lineno)d: %(message)s",
+      "datefmt": "%Y-%m-%d %H:%M:%S"
+    },
+    "uvicorn_fmt": {
+      "format": "%(asctime)s %(message)s",
+      "datefmt": "%Y-%m-%d %H:%M:%S"
+    }
+  },
+  "handlers": {
+    "file": {
+      "class": "logging.FileHandler",
+      "level": "DEBUG",
+      "formatter": "default",
+      "filename": "~/.deeppavlov/log.log"
+    },
+    "stdout": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "default",
+      "stream": "ext://sys.stdout"
+    },
+    "stderr": {
+      "class": "logging.StreamHandler",
+      "level": "DEBUG",
+      "formatter": "default",
+      "stream": "ext://sys.stderr"
+    },
+    "uvicorn_handler": {
+      "class": "logging.StreamHandler",
+      "level": "INFO",
+      "formatter": "uvicorn_fmt",
+      "stream": "ext://sys.stdout",
+      "filters": ["probeFilter"]
+    }
+  },
+  "filters": {
+    "probeFilter": {
+      "()": "deeppavlov.core.common.log.ProbeFilter"
+    }
+  }
+}
